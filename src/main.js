@@ -1,0 +1,107 @@
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+// Register GSAP ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);
+
+// Initialize Lucide Icons (from CDN global)
+const initIcons = () => {
+    if (window.lucide) {
+        window.lucide.createIcons();
+    }
+};
+
+// Header Scroll Effect
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
+// FAQ Accordion
+const faqItems = document.querySelectorAll('.faq-item');
+faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    question.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        faqItems.forEach(i => i.classList.remove('active'));
+        if (!isActive) {
+            item.classList.add('active');
+        }
+    });
+});
+
+// GSAP Animations
+document.addEventListener('DOMContentLoaded', () => {
+    // Initial Icon Init
+    initIcons();
+
+    // Hero Section Animations
+    const tl = gsap.timeline();
+    
+    tl.from('.badge', {
+        opacity: 0,
+        y: 20,
+        duration: 0.8,
+        ease: 'power3.out'
+    })
+    .from('h1', {
+        opacity: 0,
+        y: 30,
+        duration: 1,
+        ease: 'power3.out'
+    }, '-=0.5')
+    .from('.hero-content p', {
+        opacity: 0,
+        y: 20,
+        duration: 0.8,
+        ease: 'power3.out'
+    }, '-=0.6')
+    .from('.social-proof', {
+        opacity: 0,
+        x: -20,
+        duration: 0.8,
+        ease: 'power3.out'
+    }, '-=0.6')
+    .from('.hero-ctas', {
+        opacity: 0,
+        y: 20,
+        duration: 0.8,
+        ease: 'power3.out'
+    }, '-=0.6');
+
+    // Scroll Reveal for general elements
+    const revealElements = document.querySelectorAll('.service-card, .section-title, .about-content, .about-images');
+    revealElements.forEach(el => {
+        gsap.from(el, {
+            scrollTrigger: {
+                trigger: el,
+                start: 'top 95%',
+                toggleActions: 'play none none none'
+            },
+            opacity: 0,
+            y: 30,
+            duration: 1,
+            ease: 'power3.out'
+        });
+    });
+
+    // Sketch Zig-Zag Animation
+    if (document.querySelector('.transformation-card')) {
+        gsap.from('.transformation-card', {
+            scrollTrigger: {
+                trigger: '.results-grid',
+                start: 'top 85%',
+            },
+            opacity: 0,
+            y: 60,
+            duration: 1.2,
+            stagger: 0.3,
+            ease: 'power4.out',
+            clearProps: 'all'
+        });
+    }
+});
