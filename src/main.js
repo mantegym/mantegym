@@ -21,6 +21,35 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// Mobile Menu Toggle
+const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+const mobileMenuIcon = mobileMenuToggle.querySelector('i');
+
+const toggleMenu = () => {
+    navLinks.classList.toggle('active');
+    document.body.classList.toggle('mobile-menu-open');
+    
+    // Toggle Icon
+    if (navLinks.classList.contains('active')) {
+        mobileMenuIcon.setAttribute('data-lucide', 'x');
+    } else {
+        mobileMenuIcon.setAttribute('data-lucide', 'menu');
+    }
+    initIcons();
+};
+
+mobileMenuToggle.addEventListener('click', toggleMenu);
+
+// Close menu when clicking a link
+navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        if (navLinks.classList.contains('active')) {
+            toggleMenu();
+        }
+    });
+});
+
 // FAQ Accordion
 const faqItems = document.querySelectorAll('.faq-item');
 faqItems.forEach(item => {
