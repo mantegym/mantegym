@@ -119,18 +119,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Sketch Zig-Zag Animation
-    if (document.querySelector('.transformation-card')) {
-        gsap.from('.transformation-card', {
+    const transformationCards = document.querySelectorAll('.transformation-card');
+    transformationCards.forEach(card => {
+        gsap.from(card, {
             scrollTrigger: {
-                trigger: '.results-grid',
-                start: 'top 95%', /* Start sooner */
+                trigger: card,
+                start: 'top bottom', /* Trigger as soon as the top enters the viewport */
+                toggleActions: 'play none none none'
             },
             opacity: 0,
-            y: 40,
-            duration: 0.8,
-            stagger: 0.2,
-            ease: 'power2.out',
+            scale: 0.95, /* Subtle scale instead of y movement */
+            duration: 0.5,
+            ease: 'power1.out',
             clearProps: 'all'
         });
-    }
+    });
 });
