@@ -123,13 +123,13 @@ document.addEventListener('DOMContentLoaded', () => {
         gsap.from('.transformation-card', {
             scrollTrigger: {
                 trigger: '.results-grid',
-                start: 'top 85%',
+                start: 'top 95%', /* Start sooner */
             },
             opacity: 0,
-            y: 60,
-            duration: 1.2,
-            stagger: 0.3,
-            ease: 'power4.out',
+            y: 40,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: 'power2.out',
             clearProps: 'all'
         });
     }
