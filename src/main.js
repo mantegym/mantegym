@@ -63,8 +63,18 @@ faqItems.forEach(item => {
     });
 });
 
+// Video Playback Logic
+const initVideo = () => {
+    const aboutVideo = document.getElementById('about-video');
+
+    if (aboutVideo) {
+        aboutVideo.volume = 0.25; // Set volume to 25%
+    }
+};
+
 // GSAP Animations
 document.addEventListener('DOMContentLoaded', () => {
+    initVideo();
     // Initial Icon Init
     initIcons();
 
