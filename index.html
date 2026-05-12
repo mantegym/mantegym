@@ -3,298 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ManteGym | Transforma tu cuerpo en tiempo récord</title>
-    <meta name="description" content="Planes personalizados de entrenamiento y nutrición adaptados a ti. Consigue tu transformación física brutal en solo 2 meses con ManteGym.">
+    <title>ManteGym | Enlaces Oficiales</title>
+    <meta name="description" content="Accede a todos los recursos oficiales de ManteGym. Transforma tu cuerpo y tu salud.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/src/style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .linktree-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 3rem 1.5rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .linktree-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .linktree-logo {
+            width: 140px;
+            margin-bottom: 0.5rem;
+            filter: drop-shadow(0 0 20px rgba(0, 229, 255, 0.3));
+            transition: var(--transition);
+        }
+
+        .linktree-logo:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 30px rgba(0, 229, 255, 0.5));
+        }
+
+        .linktree-header h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 0;
+            background: linear-gradient(180deg, #fff 0%, #aaa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .linktree-header p {
+            color: var(--primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            opacity: 0.8;
+        }
+
+        .linktree-links {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .link-card {
+            position: relative;
+            width: 100%;
+            height: 160px;
+            border-radius: 24px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .link-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 229, 255, 0.15);
+        }
+
+        .link-card img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            transition: var(--transition);
+        }
+
+        .link-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .link-card .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.7));
+            z-index: 2;
+        }
+
+        .link-card h2 {
+            position: relative;
+            z-index: 3;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 2px 15px rgba(0,0,0,0.8);
+            transition: var(--transition);
+        }
+
+        .link-card:hover h2 {
+            color: var(--primary);
+            letter-spacing: 5px;
+        }
+
+        .linktree-footer {
+            margin-top: auto;
+            padding-top: 3rem;
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            justify-content: center;
+        }
+
+        .social-icons a {
+            color: var(--text-white);
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+    </style>
 </head>
-<body>
-    <header id="header">
-        <nav class="container">
-            <div class="logo">
-                <img src="/images/logo888.png" alt="ManteGym Logo">
-            </div>
-            <ul class="nav-links">
-                <li><a href="#about">El Método</a></li>
-                <li><a href="#results">Resultados</a></li>
-                <li><a href="#services">El Plan</a></li>
-                <li><a href="#faq">FAQ</a></li>
-            </ul>
-            <div class="nav-actions">
-                <a href="https://wa.me/YOUR_PHONE_NUMBER?text=Hola, quiero empezar mi transformación con ManteGym" class="btn btn-primary btn-nav">Empezar ahora</a>
-                <button class="mobile-menu-toggle" aria-label="Abrir menú">
-                    <i data-lucide="menu"></i>
-                </button>
-            </div>
-        </nav>
-    </header>
+<body class="linktree-page">
+    <div class="linktree-container">
+        <header class="linktree-header">
+            <img src="/images/logo888.png" alt="ManteGym Logo" class="linktree-logo">
+            <h1>ManteGym</h1>
+            <p>Selecciona una opción para empezar</p>
+        </header>
 
-    <main>
-        <!-- HERO SECTION -->
-        <section id="hero">
-            <div class="hero-bg">
-                <img src="/images/FotoFondo.png" alt="ManteGym Hero">
+        <div class="linktree-links">
+            <!-- Link 1: Método MG -->
+            <a href="/metodo.html" class="link-card">
+                <img src="/images/FotoFondo.png" alt="Método MG">
                 <div class="overlay"></div>
-            </div>
-            <div class="container hero-content">
-                <div class="hero-text">
-                    <span class="badge">Resultados reales en tiempo récord</span>
-                    <h1>Transforma tu cuerpo y tu salud en <span>tiempo récord</span></h1>
-                    <div class="hero-ctas">
-                        <a href="#about" class="btn btn-primary btn-lg btn-discover">
-                            DESCUBRE EL MÉTODO MG <i data-lucide="chevron-down" class="btn-icon-bounce"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
+                <h2>Método MG</h2>
+            </a>
 
-        <!-- SOBRE MÍ -->
-        <section id="about" class="section">
-            <div class="container about-centered">
-                <div class="about-header text-center">
-                    <h2 class="section-title">Domina tu cuerpo con el <span>Método MG</span></h2>
-                </div>
-                
-                <div class="about-video-wrapper">
-                    <div class="hero-visual">
-                        <video id="about-video" playsinline loop controls>
-                            <source src="/videos/PROYECTO MG VIDEO INICIO.mp4" type="video/mp4">
-                            Tu navegador no soporta el formato de video.
-                        </video>
-                    </div>
-                </div>
+            <!-- Link 2: YouTube -->
+            <a href="https://youtube.com/@mantegym?si=ApZad4FCe4i0WJO3" target="_blank" class="link-card">
+                <img src="/images/hero.png" alt="YouTube">
+                <div class="overlay"></div>
+                <h2>Canal YouTube</h2>
+            </a>
 
-                <div class="about-content text-center">
-                    <p>No se trata solo de entrenar más, sino de entrenar mejor. El <strong>Método MG</strong> es la culminación de años de disciplina extrema aplicados a una estrategia científica de transformación física.</p>
-                    <p>He diseñado un sistema donde la <strong>precisión nutricional</strong> y la <strong>programación de fuerza</strong> se unen para garantizar resultados visibles en tiempo récord. No vendo humo, vendo un sistema probado que funciona.</p>
-                    
-                    <div class="about-stats">
-                        <div class="stat">
-                            <h3>Cambios</h3>
-                            <p>Brutales</p>
-                        </div>
-                        <div class="stat">
-                            <h3>Eficacia</h3>
-                            <p>Probada</p>
-                        </div>
-                    </div>
-                    
-                    <div class="about-actions">
-                        <a href="#services" class="btn btn-outline">Ver plan</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- RESULTADOS (TRANSFORMACIONES REALES) -->
-        <section id="results" class="section bg-alt">
-            <div class="container">
-                <div class="text-center">
-                    <span class="badge">Casos de Éxito</span>
-                    <h2 class="section-title">Resultados <span>Imparables</span></h2>
-                    <p class="section-subtitle">No son solo números, son vidas transformadas. Estos son algunos de mis guerreros.</p>
-                </div>
-                <div class="results-grid">
-                    <!-- Transformation 1 -->
-                    <div class="transformation-card">
-                        <div class="transformation-media">
-                            <div class="media-side before">
-                                <img src="/images/1.jpeg" alt="Antes Testimonio 1">
-                                <span class="side-label">Antes</span>
-                            </div>
-                            <div class="media-side after">
-                                <img src="/images/2.jpeg" alt="Después Testimonio 1">
-                                <span class="side-label">Después</span>
-                            </div>
-                        </div>
-                        <div class="transformation-info">
-                            <h4>Cambio Físico 1</h4>
-                            <p>“Después de 4 meses siguiendo el método MG, el cambio ha sido muy claro. Antes me costaba mucho progresar sin taparme, pero ahora he conseguido ganar músculo manteniéndome definido. Me veo más estético, más equilibrado y con mejor rendimiento en el gimnasio. Es la primera vez que siento que tengo el control de mi físico y que todo lo que hago tiene sentido.”</p>
-                        </div>
-                    </div>
-                    <!-- Transformation 2 -->
-                    <div class="transformation-card">
-                        <div class="transformation-media">
-                            <div class="media-side before">
-                                <img src="/images/4.jpeg" alt="Antes Testimonio 2">
-                                <span class="side-label">Antes</span>
-                            </div>
-                            <div class="media-side after">
-                                <img src="/images/3.jpeg" alt="Después Testimonio 2">
-                                <span class="side-label">Después</span>
-                            </div>
-                        </div>
-                        <div class="transformation-info">
-                            <h4>Cambio Físico 2</h4>
-                            <p>“En solo 1 mes con el método MG ya he visto un cambio que no esperaba tan rápido. Me noto más definido, con más músculo y sin haber ganado grasa. Desde el principio todo está enfocado a avanzar, sin perder el tiempo. Eso es lo que más me ha motivado: ver resultados reales en tan poco tiempo.”</p>
-                        </div>
-                    </div>
-                    <!-- Transformation 3 -->
-                    <div class="transformation-card">
-                        <div class="transformation-media">
-                            <div class="media-side before">
-                                <img src="/images/5.jpeg" alt="Antes Testimonio 3">
-                                <span class="side-label">Antes</span>
-                            </div>
-                            <div class="media-side after">
-                                <img src="/images/6.PNG" alt="Después Testimonio 3">
-                                <span class="side-label">Después</span>
-                            </div>
-                        </div>
-                        <div class="transformation-info">
-                            <h4>Cambio Físico 3</h4>
-                            <p>“Durante aproximadamente 5 meses inicié un proceso de transformación física desde una condición inicial poco desarrollada: bajo nivel de masa muscular y escasa densidad corporal. Aunque visualmente pueda parecer un cambio de 5 meses, la realidad es que han sido 3 meses y medio de intervención estructurada. He conseguido una recomposición corporal notable en un periodo reducido. Esto no es suerte: es metodología, adherencia y ejecución precisa.”</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SERVICIOS -->
-        <section id="services" class="section method-immersive">
-            <div class="method-card-v2">
-                <div class="container">
-                    <div class="method-header">
-                        <span class="badge">Acceso Exclusivo</span>
-                        <h2>El <span>Plan MG</span></h2>
-                        <p>El sistema definitivo que condensa entrenamiento, nutrición y mentalidad en un solo plan sin fisuras.</p>
-                    </div>
-                    
-                    <div class="method-grid">
-                        <div class="method-item">
-                            <div class="method-icon-wrapper">
-                                <i data-lucide="dumbbell"></i>
-                            </div>
-                            <p>Entrenamiento de Élite</p>
-                        </div>
-                        <div class="method-item">
-                            <div class="method-icon-wrapper">
-                                <i data-lucide="utensils"></i>
-                            </div>
-                            <p>Nutrición de Precisión</p>
-                        </div>
-                        <div class="method-item">
-                            <div class="method-icon-wrapper">
-                                <i data-lucide="message-circle"></i>
-                            </div>
-                            <p>Optimización Semanal</p>
-                        </div>
-                    </div>
-
-                    <div class="method-footer">
-                        <a href="https://wa.me/YOUR_PHONE_NUMBER?text=Hola, quiero empezar con el Método MG" class="btn btn-primary btn-lg">
-                            EMPEZAR MI CAMBIO AHORA <i data-lucide="arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA FINAL -->
-        <section id="final-cta" class="section">
-            <div class="cta-bg">
-                <img src="/images/hero.png" alt="ManteGym Motivation">
-                <div class="cta-overlay"></div>
-            </div>
-            <div class="container">
-                <div class="cta-card">
-                    <span class="badge">Última oportunidad</span>
-                    <h2>¿Si quieres cambiar tu cuerpo, <span>este es el momento</span>?</h2>
-                    <p>No dejes para mañana el físico que puedes empezar a construir hoy. La disciplina es el puente entre tus metas y tus logros.</p>
-                    <a href="https://wa.me/YOUR_PHONE_NUMBER?text=Hola, quiero empezar mi transformación con ManteGym" class="btn btn-primary btn-lg">
-                        Habla conmigo ahora
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ -->
-        <section id="faq" class="section">
-            <div class="container">
-                <h2 class="section-title text-center">Preguntas <span>Frecuentes</span></h2>
-                <div class="faq-accordion">
-                    <div class="faq-item">
-                        <div class="faq-question">¿Cuánto se tarda en ver resultados? <i data-lucide="chevron-down"></i></div>
-                        <div class="faq-answer">Los primeros cambios visuales suelen aparecer a partir de la semana 2 o 3 si sigues el plan al 100%.</div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">¿Necesito experiencia previa? <i data-lucide="chevron-down"></i></div>
-                        <div class="faq-answer">No. Adapto los planes tanto si eres principiante como si ya llevas tiempo entrenando.</div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">¿Las dietas son muy estrictas? <i data-lucide="chevron-down"></i></div>
-                        <div class="faq-answer">Para nada. Trabajo con nutrición flexible para que puedas mantenerlo a largo plazo.</div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">¿Se adapta a mi horario? <i data-lucide="chevron-down"></i></div>
-                        <div class="faq-answer">Sí, diseñamos la rutina en base a tu disponibilidad real, ya sea en gym o casa.</div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">¿Incluye seguimiento? <i data-lucide="chevron-down"></i></div>
-                        <div class="faq-answer">Sí, el seguimiento es semanal y tienes contacto directo conmigo por WhatsApp para dudas.</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container footer-grid">
-            <!-- Brand Column -->
-            <div class="footer-col brand">
-                <img src="/images/logo888.png" alt="ManteGym Logo" class="footer-logo">
-                <p>Transformación física real basada en la disciplina y la ciencia. Tu mejor versión empieza aquí.</p>
-            </div>
-            
-            <!-- Links Column -->
-            <div class="footer-col">
-                <h4>Navegación</h4>
-                <ul>
-                    <li><a href="#hero">Inicio</a></li>
-                    <li><a href="#about">El Método</a></li>
-                    <li><a href="#services">El Plan</a></li>
-                    <li><a href="#results">Casos de Éxito</a></li>
-                    <li><a href="#faq">Preguntas</a></li>
-                </ul>
-            </div>
-
-            <!-- Services Column -->
-            <div class="footer-col">
-                <h4>Servicios</h4>
-                <ul>
-                    <li><a href="#services">Entrenamiento Personal</a></li>
-                    <li><a href="#services">Planes de Nutrición</a></li>
-                    <li><a href="#services">Transformación 60 Días</a></li>
-                    <li><a href="#services">Asesoría Online</a></li>
-                </ul>
-            </div>
-
-            <!-- Contact Column -->
-            <div class="footer-col">
-                <h4>Contacto</h4>
-                <p>¿Tienes dudas? Escríbeme directamente por WhatsApp para una asesoría gratuita.</p>
-                <a href="https://wa.me/YOUR_PHONE_NUMBER" class="footer-contact-link">
-                    <i data-lucide="message-circle"></i> Enviar mensaje
-                </a>
-            </div>
+            <!-- Link 3: Placeholder -->
+            <a href="#" class="link-card">
+                <img src="/images/1.jpeg" alt="Comunidad">
+                <div class="overlay"></div>
+                <h2>Comunidad</h2>
+            </a>
         </div>
-        
-        <div class="footer-bottom">
-            <div class="container footer-bottom-content">
-                <p>&copy; 2026 ManteGym. Todos los derechos reservados.</p>
-                <div class="footer-legal">
-                    <a href="#">Aviso Legal</a>
-                    <a href="#">Política de Privacidad</a>
-                </div>
+
+        <footer class="linktree-footer">
+            <div class="social-icons">
+                <a href="#"><i data-lucide="instagram"></i></a>
+                <a href="https://youtube.com/@mantegym?si=ApZad4FCe4i0WJO3" target="_blank"><i data-lucide="youtube"></i></a>
+                <a href="https://wa.me/YOUR_PHONE_NUMBER"><i data-lucide="message-circle"></i></a>
             </div>
-        </div>
-    </footer>
+            <p>&copy; 2026 ManteGym. Todos los derechos reservados.</p>
+        </footer>
+    </div>
 
-
-    <script type="module" src="/src/main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
