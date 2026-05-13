@@ -135,6 +135,19 @@
             letter-spacing: 2px;
             text-shadow: 0 2px 10px rgba(0,0,0,0.8);
             transition: var(--transition);
+            margin: 0;
+        }
+
+        .link-card p.subtitle {
+            position: relative;
+            z-index: 3;
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.25rem;
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
         }
 
         /* WhatsApp Card - Brand Aligned (Electric Blue/Black) */
@@ -208,16 +221,19 @@
 
             <!-- Link 2: YouTube -->
             <a href="https://youtube.com/@mantegym?si=ApZad4FCe4i0WJO3" target="_blank" class="link-card">
-                <img src="/images/youtube_banner.png" alt="YouTube">
+                <img src="/images/youtube_aesthetic.png" alt="YouTube">
                 <div class="overlay"></div>
                 <h2>Canal YouTube</h2>
             </a>
 
             <!-- Link 3: Sponsor -->
             <a href="http://zumu.be/mantegym" target="_blank" class="link-card sponsor-card">
-                <img src="/images/sponsor_banner.png" alt="Sponsor">
+                <img src="/images/sponsor_aesthetic.png" alt="Sponsor">
                 <div class="overlay"></div>
-                <h2>Sponsor Oficial</h2>
+                <div style="position: relative; z-index: 3; text-align: center;">
+                    <h2>Sponsor Oficial</h2>
+                    <p class="subtitle">10% DTO - CÓDIGO: MANTEGYM</p>
+                </div>
             </a>
 
             <!-- Link 4: WhatsApp -->
