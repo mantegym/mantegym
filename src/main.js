@@ -1,8 +1,60 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { loadStripe } from '@stripe/stripe-js';
 
 // Register GSAP ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
+
+// Stripe Integration
+const initStripe = async () => {
+    const buyButtons = document.querySelectorAll('.btn-buy');
+    const stripePublicKey = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY;
+    
+    if (!stripePublicKey) {
+        console.warn('ManteGym: Stripe Public Key (VITE_STRIPE_PUBLISHABLE_KEY) not found in .env');
+        return;
+    }
+
+    let stripe;
+    try {
+        stripe = await loadStripe(stripePublicKey);
+    } catch (err) {
+        console.error('Failed to load Stripe:', err);
+        return;
+    }
+
+    buyButtons.forEach(button => {
+        button.addEventListener('click', async (e) => {
+            const plan = button.getAttribute('data-plan');
+            const originalText = button.textContent;
+            
+            button.disabled = true;
+            button.textContent = 'Cargando...';
+
+            try {
+                const response = await fetch('/.netlify/functions/create-checkout', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ plan }),
+                });
+
+                const session = await response.json();
+
+                if (session.id) {
+                    const { error } = await stripe.redirectToCheckout({ sessionId: session.id });
+                    if (error) throw error;
+                } else {
+                    throw new Error(session.error || 'Error iniciando sesión de pago');
+                }
+            } catch (error) {
+                console.error('Stripe Error:', error);
+                alert('No se pudo conectar con la pasarela de pago. Asegúrate de que las claves de Stripe estén configuradas correctamente.');
+                button.disabled = false;
+                button.textContent = originalText;
+            }
+        });
+    });
+};
 
 // Initialize Lucide Icons (from CDN global)
 const initIcons = () => {
@@ -14,9 +66,9 @@ const initIcons = () => {
 // Header Scroll Effect
 const header = document.getElementById('header');
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
+    if (header && window.scrollY > 50) {
         header.classList.add('scrolled');
-    } else {
+    } else if (header) {
         header.classList.remove('scrolled');
     }
 });
@@ -24,31 +76,33 @@ window.addEventListener('scroll', () => {
 // Mobile Menu Toggle
 const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
 const navLinks = document.querySelector('.nav-links');
-const mobileMenuIcon = mobileMenuToggle.querySelector('i');
 
-const toggleMenu = () => {
-    navLinks.classList.toggle('active');
-    document.body.classList.toggle('mobile-menu-open');
-    
-    // Toggle Icon
-    if (navLinks.classList.contains('active')) {
-        mobileMenuIcon.setAttribute('data-lucide', 'x');
-    } else {
-        mobileMenuIcon.setAttribute('data-lucide', 'menu');
-    }
-    initIcons();
-};
-
-mobileMenuToggle.addEventListener('click', toggleMenu);
-
-// Close menu when clicking a link
-navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
+if (mobileMenuToggle && navLinks) {
+    const mobileMenuIcon = mobileMenuToggle.querySelector('i');
+    const toggleMenu = () => {
+        navLinks.classList.toggle('active');
+        document.body.classList.toggle('mobile-menu-open');
+        
+        // Toggle Icon
         if (navLinks.classList.contains('active')) {
-            toggleMenu();
+            mobileMenuIcon.setAttribute('data-lucide', 'x');
+        } else {
+            mobileMenuIcon.setAttribute('data-lucide', 'menu');
         }
+        initIcons();
+    };
+
+    mobileMenuToggle.addEventListener('click', toggleMenu);
+
+    // Close menu when clicking a link
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (navLinks.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
     });
-});
+}
 
 // FAQ Accordion
 const faqItems = document.querySelectorAll('.faq-item');
@@ -75,42 +129,44 @@ const initVideo = () => {
 // GSAP Animations
 document.addEventListener('DOMContentLoaded', () => {
     initVideo();
-    // Initial Icon Init
     initIcons();
+    initStripe(); // Start Stripe logic
 
     // Hero Section Animations
     const tl = gsap.timeline();
     
-    tl.from('.badge', {
-        opacity: 0,
-        y: 20,
-        duration: 0.8,
-        ease: 'power3.out'
-    })
-    .from('h1', {
-        opacity: 0,
-        y: 30,
-        duration: 1,
-        ease: 'power3.out'
-    }, '-=0.5')
-    .from('.hero-content p', {
-        opacity: 0,
-        y: 20,
-        duration: 0.8,
-        ease: 'power3.out'
-    }, '-=0.6')
-    .from('.social-proof', {
-        opacity: 0,
-        x: -20,
-        duration: 0.8,
-        ease: 'power3.out'
-    }, '-=0.6')
-    .from('.hero-ctas', {
-        opacity: 0,
-        y: 20,
-        duration: 0.8,
-        ease: 'power3.out'
-    }, '-=0.6');
+    if (document.querySelector('.badge')) {
+        tl.from('.badge', {
+            opacity: 0,
+            y: 20,
+            duration: 0.8,
+            ease: 'power3.out'
+        })
+        .from('h1', {
+            opacity: 0,
+            y: 30,
+            duration: 1,
+            ease: 'power3.out'
+        }, '-=0.5')
+        .from('.hero-content p', {
+            opacity: 0,
+            y: 20,
+            duration: 0.8,
+            ease: 'power3.out'
+        }, '-=0.6')
+        .from('.social-proof', {
+            opacity: 0,
+            x: -20,
+            duration: 0.8,
+            ease: 'power3.out'
+        }, '-=0.6')
+        .from('.hero-ctas', {
+            opacity: 0,
+            y: 20,
+            duration: 0.8,
+            ease: 'power3.out'
+        }, '-=0.6');
+    }
 
     // Scroll Reveal for general elements
     const revealElements = document.querySelectorAll('.service-card, .section-title, .about-content, .about-images');
@@ -134,11 +190,11 @@ document.addEventListener('DOMContentLoaded', () => {
         gsap.from(card, {
             scrollTrigger: {
                 trigger: card,
-                start: 'top bottom', /* Trigger as soon as the top enters the viewport */
+                start: 'top bottom',
                 toggleActions: 'play none none none'
             },
             opacity: 0,
-            scale: 0.95, /* Subtle scale instead of y movement */
+            scale: 0.95,
             duration: 0.5,
             ease: 'power1.out',
             clearProps: 'all'
