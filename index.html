@@ -16,33 +16,37 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 3rem 1.5rem;
-            max-width: 500px;
+            padding: 1rem;
+            max-width: 480px;
             margin: 0 auto;
+            justify-content: center;
         }
 
         .linktree-header {
-            margin-bottom: 3rem;
+            margin-bottom: 1rem;
             text-align: center;
+            width: 100%;
         }
 
         .linktree-logo {
-            width: 140px;
-            margin-bottom: 0.5rem;
-            filter: drop-shadow(0 0 20px rgba(0, 229, 255, 0.3));
+            width: 90px;
+            height: auto;
+            display: block;
+            margin: 0 auto 0.5rem;
+            filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.3));
             transition: var(--transition);
         }
 
         .linktree-logo:hover {
             transform: scale(1.05);
-            filter: drop-shadow(0 0 30px rgba(0, 229, 255, 0.5));
+            filter: drop-shadow(0 0 25px rgba(0, 229, 255, 0.5));
         }
 
         .linktree-header h1 {
-            font-size: 3.2rem;
+            font-size: 2.5rem;
             font-weight: 800;
-            letter-spacing: -2px;
-            margin-bottom: 0;
+            letter-spacing: -1.5px;
+            margin: 0;
             background: linear-gradient(180deg, #fff 0%, #aaa 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -53,8 +57,8 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-size: 0.8rem;
-            margin-top: 0.5rem;
+            font-size: 0.7rem;
+            margin-top: 0.1rem;
             opacity: 0.8;
         }
 
@@ -62,14 +66,14 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 0.75rem;
         }
 
         .link-card {
             position: relative;
             width: 100%;
-            height: 160px;
-            border-radius: 24px;
+            height: 110px;
+            border-radius: 18px;
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -83,10 +87,10 @@
         }
 
         .link-card:hover {
-            transform: translateY(-8px) scale(1.02);
+            transform: translateY(-3px) scale(1.01);
             border-color: var(--primary);
             background: rgba(255, 255, 255, 0.05);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 229, 255, 0.15);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 229, 255, 0.1);
         }
 
         .link-card img {
@@ -100,8 +104,15 @@
             transition: var(--transition);
         }
 
+        /* Specific fix for Sponsor Image - trying to show more content */
+        .sponsor-card img {
+            object-fit: cover;
+            object-position: center 15%; /* Muestra más de la parte superior donde suele estar el logo/texto */
+            opacity: 0.6;
+        }
+
         .link-card:hover img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         .link-card .overlay {
@@ -118,42 +129,64 @@
             position: relative;
             z-index: 3;
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            text-shadow: 0 2px 15px rgba(0,0,0,0.8);
+            letter-spacing: 2px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
             transition: var(--transition);
         }
 
-        .link-card:hover h2 {
+        /* WhatsApp Card - Brand Aligned (Electric Blue/Black) */
+        .whatsapp-card {
+            height: 90px;
+            background: rgba(0, 229, 255, 0.05) !important;
+            border: 2px solid var(--primary) !important;
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.1);
+            gap: 0.75rem;
+        }
+
+        .whatsapp-card:hover {
+            background: rgba(0, 229, 255, 0.1) !important;
+            box-shadow: 0 0 25px rgba(0, 229, 255, 0.2);
+            transform: translateY(-3px) scale(1.02);
+        }
+
+        .whatsapp-card i {
+            width: 24px;
+            height: 24px;
             color: var(--primary);
-            letter-spacing: 5px;
+            z-index: 3;
+        }
+
+        .whatsapp-card h2 {
+            font-size: 1.15rem;
+            letter-spacing: 1.5px;
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
         }
 
         .linktree-footer {
-            margin-top: auto;
-            padding-top: 3rem;
+            margin-top: 1rem;
             text-align: center;
             color: var(--text-gray);
-            font-size: 0.9rem;
+            font-size: 0.75rem;
         }
 
         .social-icons {
             display: flex;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
             justify-content: center;
         }
 
         .social-icons a {
             color: var(--text-white);
-            transition: var(--transition);
         }
 
         .social-icons a:hover {
             color: var(--primary);
-            transform: translateY(-3px);
+            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -180,11 +213,17 @@
                 <h2>Canal YouTube</h2>
             </a>
 
-            <!-- Link 3: Placeholder -->
-            <a href="#" class="link-card">
-                <img src="/images/1.jpeg" alt="Comunidad">
+            <!-- Link 3: Sponsor -->
+            <a href="#" class="link-card sponsor-card">
+                <img src="/images/promo.jpeg" alt="Sponsor">
                 <div class="overlay"></div>
-                <h2>Comunidad</h2>
+                <h2>Sponsor Oficial</h2>
+            </a>
+
+            <!-- Link 4: WhatsApp -->
+            <a href="https://wa.me/34613339231" target="_blank" class="link-card whatsapp-card">
+                <i data-lucide="message-circle"></i>
+                <h2>WhatsApp Directo</h2>
             </a>
         </div>
 
@@ -192,7 +231,7 @@
             <div class="social-icons">
                 <a href="#"><i data-lucide="instagram"></i></a>
                 <a href="https://youtube.com/@mantegym?si=ApZad4FCe4i0WJO3" target="_blank"><i data-lucide="youtube"></i></a>
-                <a href="https://wa.me/YOUR_PHONE_NUMBER"><i data-lucide="message-circle"></i></a>
+                <a href="https://wa.me/34613339231" target="_blank"><i data-lucide="message-circle"></i></a>
             </div>
             <p>&copy; 2026 ManteGym. Todos los derechos reservados.</p>
         </footer>
